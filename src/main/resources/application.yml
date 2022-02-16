@@ -18,7 +18,7 @@ spring:
   jpa:
     defer-datasource-initialization: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     properties:
       hibernate:
         format_sql: true
@@ -27,7 +27,7 @@ logging.level:
   org.hibernate.SQL: debug
 
 token:
-  secret: passion-factory
+  secret: dGVzdCBpbnB1dA==
   expiration_time: 86400000
   prefix: Bearer
   claim: name
