@@ -1,10 +1,13 @@
 package com.passionfactory.user.entity;
 
+import com.passionfactory.todos.entity.Todos;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,6 +18,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private long id;
 
     @Column(nullable = false, unique = true)
@@ -29,9 +33,12 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @OneToMany(mappedBy = "user")
+    private List<Todos> todos = new ArrayList<>();
+
     @CreatedDate
     @Column(updatable = false)
-    private LocalDateTime createdDate;
+    private LocalDateTime createdAt;
 
     public void setEncryptedPassword(String encryptedPassword) {
         this.password = encryptedPassword;

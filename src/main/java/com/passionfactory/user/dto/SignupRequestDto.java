@@ -39,7 +39,7 @@ public class SignupRequestDto {
                 .age(age)
                 .password(password)
                 .role(role)
-                .createdDate(LocalDateTime.now())
+                .createdAt(LocalDateTime.now())
                 .build();
     }
 }
