@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 public class Todos extends BaseLocalDateTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "todos_id")
     private long id;
 
@@ -28,4 +28,17 @@ public class Todos extends BaseLocalDateTimeEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public void updateTodo(String name, boolean completed) {
+        this.name = name;
+        this.completed = completed;
+        setCompletedAt(completed);
+    }
+
+    private void setCompletedAt(boolean completed) {
+        if (completed) {
+            this.completedAt = LocalDateTime.now();
+        } else {
+            this.completedAt = null;
+        }
+    }
 }

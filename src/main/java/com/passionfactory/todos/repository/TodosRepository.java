@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface TodosRepository extends JpaRepository<Todos, Long> {
 
-    Page<Todos> findAllByUserId(Long userId, Pageable pageable);
+    Page<Todos> findAllByUserName(String name, Pageable pageable);
 
-    Optional<Todos> findByIdAndUserId(Long todosId, Long userId);
+    Optional<Todos> findByIdAndUserName(Long todosId, String name);
 }

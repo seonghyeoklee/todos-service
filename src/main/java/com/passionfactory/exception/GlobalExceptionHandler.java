@@ -34,10 +34,19 @@ public class GlobalExceptionHandler {
                 .body(getErrorResponse(httpStatus));
     }
 
+    @ExceptionHandler(UnAuthorizationException.class)
+    protected ResponseEntity<ErrorResponse> handleUnAuthorizationException() {
+        HttpStatus httpStatus = UNAUTHORIZED;
+        return ResponseEntity
+                .status(httpStatus)
+                .body(getErrorResponse(httpStatus));
+    }
+
     private ErrorResponse getErrorResponse(HttpStatus httpStatus) {
         return ErrorResponse.builder()
                 .status(String.valueOf(httpStatus.value()))
                 .error(httpStatus.getReasonPhrase())
                 .build();
     }
+
 }
