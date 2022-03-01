@@ -54,6 +54,7 @@ public class TodosService {
         checkTodosByUserId(todos, user);
 
         todos.updateTodo(updateTodoRequestDto.getName(), updateTodoRequestDto.isCompleted());
+        
 
         return new UpdateTodoResponseDto(todos);
     }
